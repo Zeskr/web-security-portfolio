@@ -35,7 +35,7 @@ Accessing the administrative dashboard via the forged authorization cookie.
 
 **Exploitation (Impact):**
 Executing the delete action on the target user `carlos` as an unauthorized user.
-![User Deletion](./images/carlos-deleted.png)
+![User Deletion](./images/carlos-del.png)
 
 ---
 
