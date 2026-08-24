@@ -1,15 +1,13 @@
 # Unprotected Admin Functionality
 
-**Platform:** PortSwigger Web Security Academy
-
-**Vulnerability Class:** Broken Access Control / Missing Authentication (CWE-306)
-
-**Severity:** High (CVSS: 7.5)
+* **Platform:** PortSwigger Web Security Academy
+* **Vulnerability Class:** Broken Access Control & Information Exposure (CWE-306, CWE-200)
+* **Severity:** High (CVSS: 7.5)
 
 ---
 
 ## 1. Executive Summary
-The target application contains an unprotected administrative dashboard. The hidden path to this panel is leaked via the public `robots.txt` file, allowing an unauthenticated attacker to discover the URL, bypass intended access controls, and execute arbitrary administrative actions (such as deleting user accounts). 
+The target application contains an unprotected administrative dashboard. The hidden path to this panel is leaked via the public `robots.txt` file (Information Exposure), allowing an unauthenticated attacker to discover the URL, bypass intended access controls, and execute arbitrary administrative actions, such as deleting user accounts (Broken Access Control).
 
 ## 2. Reproduction Steps
 1. Navigate to the target application and append `/robots.txt` to the URL.
@@ -20,17 +18,17 @@ The target application contains an unprotected administrative dashboard. The hid
 
 ## 3. Proof of Concept (PoC)
 
-**Reconnaissance:**
+**Reconnaissance (Information Exposure):**
 Accessing `robots.txt` reveals the administrative endpoint.
 ![Robots.txt](./images/robots-txt.png)
 
-**Privilege Bypass:**
+**Privilege Bypass (Missing Authentication):**
 Directly navigating to the disclosed path grants full administrative access.
 ![Admin Panel](./images/admin-panel.png)
 
-**Exploitation:**
+**Exploitation (Impact):**
 Executing the delete action on the target user `carlos`.
-![Lab Solved](./images/solved.png)
+![User Deletion](./images/solved.png)
 
 ---
 
