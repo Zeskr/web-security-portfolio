@@ -10,21 +10,26 @@
 The target application utilizes a predictable, unverified client-side cookie (`Admin=false`) to determine user authorization levels. Because the application fails to enforce cryptographic integrity or server-side validation on this cookie, an authenticated standard user can manually tamper with the cookie's value to escalate their privileges, granting them full unauthorized access to the administrative dashboard.
 
 ## 2. Reproduction Steps
-1. Authenticate to the application using standard user credentials (`wiener:peter`).
-2. Intercept the HTTP traffic using Burp Suite Proxy.
-3. Observe that upon successful login, the server sets a predictable role-based cookie: `Set-Cookie: Admin=false`.
-4. Send a subsequent `GET` request to the application (e.g., `/my-account` or `/admin`) to Burp Suite Repeater.
-5. Manually modify the request header to forge the cookie value: `Cookie: session=<SESSION_ID>; Admin=true`.
-6. Forward the tampered request. The server accepts the forged cookie and grants administrative privileges.
-7. Navigate to the `/admin` endpoint using the forged cookie and execute the deletion of the user `carlos`.
+1. Navigate to the `/admin` endpoint and observe that access is denied.
+2. Authenticate to the application using standard user credentials (`wiener:peter`).
+3. Intercept the login response using Burp Suite Proxy and observe the server setting a predictable role-based cookie: `Set-Cookie: Admin=false`.
+4. **Validation Phase:** Send a subsequent `GET` request to Burp Suite Repeater. Manually modify the request header to `Cookie: Admin=true` and forward it to verify the server accepts the forged role.
+5. **Exploitation Phase:** In the active browser session, open the browser's Developer Tools and navigate to the **Storage** (or Application) tab.
+6. Locate the `Admin` cookie and manually edit its value from `false` to `true`.
+7. Navigate directly to `/admin` in the browser. The forged cookie grants access to the administrative dashboard.
+8. Click the "Delete" link next to the user `carlos` to complete the attack.
 
 ## 3. Proof of Concept (PoC)
 
-**Cookie Manipulation (Burp Suite):**
-Intercepting and modifying the `Admin` cookie value to `true` within Burp Suite Repeater bypasses authorization checks.
-![Cookie Manipulation](./images/cookie-manipulation.png)
+**Vulnerability Validation (Burp Repeater):**
+Testing the cookie manipulation in Repeater confirms the server accepts the `Admin=true` payload and returns the privileged interface.
+![Repeater Validation](./images/repeater-validation.png)
 
-**Privilege Escalation:**
+**Live Session Manipulation (Developer Tools):**
+Modifying the active session's role parameter directly within the browser's Storage tab.
+![DevTools Cookie Edit](./images/devtools-cookie.png)
+
+**Privilege Bypass:**
 Accessing the administrative dashboard via the forged authorization cookie.
 ![Admin Access](./images/admin-access.png)
 
