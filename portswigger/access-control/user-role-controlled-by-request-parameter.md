@@ -1,4 +1,4 @@
-# Privilege Escalation via Insecure Cookie Manipulation
+# User role controlled by request parameter
 
 * **Platform:** PortSwigger Web Security Academy
 * **Vulnerability Class:** Broken Access Control & Insecure Cookie Handling (CWE-284, CWE-565)
