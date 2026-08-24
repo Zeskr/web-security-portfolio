@@ -1,7 +1,9 @@
 # Unprotected Admin Functionality
 
 **Platform:** PortSwigger Web Security Academy
+
 **Vulnerability Class:** Broken Access Control / Missing Authentication (CWE-306)
+
 **Severity:** High (CVSS: 7.5)
 
 ---
