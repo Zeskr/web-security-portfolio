@@ -20,14 +20,17 @@ The target application contains an unprotected administrative dashboard. The hid
 
 **Reconnaissance (Information Exposure):**
 Accessing `robots.txt` reveals the administrative endpoint.
+
 ![Robots.txt](./images/robots-txt.png)
 
 **Privilege Bypass (Missing Authentication):**
 Directly navigating to the disclosed path grants full administrative access.
+
 ![Admin Panel](./images/administrator-panel.png)
 
 **Exploitation (Impact):**
 Executing the delete action on the target user `carlos`.
+
 ![User Deletion](./images/carlos-deleted.png)
 
 ---
