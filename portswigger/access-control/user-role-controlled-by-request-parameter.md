@@ -23,18 +23,22 @@ The target application utilizes a predictable, unverified client-side cookie (`A
 
 **Vulnerability Validation (Burp Repeater):**
 Testing the cookie manipulation in Repeater confirms the server accepts the `Admin=true` payload and returns the privileged interface.
+
 ![Repeater Validation](./images/repeater-validation.png)
 
 **Live Session Manipulation (Developer Tools):**
 Modifying the active session's role parameter directly within the browser's Storage tab.
+
 ![DevTools Cookie Edit](./images/devtools-cookie.png)
 
 **Privilege Bypass:**
 Accessing the administrative dashboard via the forged authorization cookie.
+
 ![Admin Access](./images/admin-access.png)
 
 **Exploitation (Impact):**
 Executing the delete action on the target user `carlos` as an unauthorized user.
+
 ![User Deletion](./images/carlos-del.png)
 
 ---
