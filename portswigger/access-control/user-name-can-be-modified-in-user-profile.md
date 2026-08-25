@@ -12,8 +12,8 @@ The target application's user profile update functionality blindly binds incomin
 ## 2. Reproduction Steps
 1. Authenticate to the application using standard user credentials (`wiener:peter`).
 2. Navigate to the `/my-account` page and submit an email change request.
-3. Intercept the `POST` request using Burp Suite and observe that the server returns a JSON response disclosing the user's internal attributes, including `"roleid": 1`.
-4. Forward the email update request to Burp Suite Repeater.
+3. Intercept the `POST` request using Burp Suite.
+4. Forward the email update request to Burp Suite Repeater and dispatch it to observe that the server returns a JSON response disclosing the user's internal attributes, including `"roleid": 1`.
 5. In the JSON request body, append the privilege parameter: `{"email":"<EMAIL>", "roleid":2}`.
 6. Dispatch the modified request. The server accepts the parameter and returns `"roleid": 2` in the JSON response body.
 7. Return to the browser session and refresh `/my-account` to confirm administrative access is now active.
