@@ -23,19 +23,23 @@ The target application's user profile update functionality blindly binds incomin
 
 **Attribute Disclosure (Baseline Response):**
 The initial profile update API response reveals the internal role attribute schema (`"roleid": 1`).
+
 ![Role Attribute Disclosure](./images/role-disclosure.png)
 
 **Mass Assignment Privilege Escalation (Burp Repeater):**
 Injecting `"roleid": 2` into the JSON payload updates the user's role on the backend.
+
 ![Role ID Injection](./images/role-injection.png)
 
 **Privilege Verification (Admin Panel Access):**
 Refreshing the user session reflects the updated permissions and exposes the `/admin` interface.
-![Admin Access](./images/admin-access.png)
+
+![Admin Access](./images/adm.png)
 
 **Exploitation (Impact):**
 Executing the unauthorized administrative user deletion on `carlos`.
-![User Deletion](./images/carlos-deleted.png)
+
+![User Deletion](./images/del.png)
 
 ---
 
