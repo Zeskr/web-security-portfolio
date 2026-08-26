@@ -7,7 +7,7 @@
 ---
 
 ## 1. Executive Summary
-The target application utilizes an obfuscated URL to hide its administrative dashboard. However, the application leaks this sensitive URL directly within the front-end HTML source code (Information Exposure). An unauthenticated attacker can view the page source, extract the hidden path, and navigate to the dashboard to execute arbitrary administrative actions, such as deleting user accounts (Broken Access).
+The target application utilizes an obfuscated URL to hide its administrative dashboard. However, the application leaks this sensitive URL directly within the front-end HTML source code (Information Exposure). An unauthenticated attacker can view the page source, extract the hidden path, and navigate to the dashboard to execute arbitrary administrative actions, such as deleting user accounts (Broken Access Control).
 
 ## 2. Reproduction Steps
 1. Navigate to the target application's homepage.
