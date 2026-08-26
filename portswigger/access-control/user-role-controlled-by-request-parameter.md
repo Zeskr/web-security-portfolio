@@ -14,7 +14,7 @@ The target application utilizes a predictable, unverified client-side cookie (`A
 2. Authenticate to the application using standard user credentials (`wiener:peter`).
 3. Intercept the login response using Burp Suite Proxy and observe the server setting a predictable role-based cookie: `Set-Cookie: Admin=false`.
 4. **Validation Phase:** Send a subsequent `GET` request to Burp Suite Repeater. Manually modify the request header to `Cookie: Admin=true` and forward it to verify the server accepts the forged role.
-5. **Exploitation Phase:** In the active browser session, open the browser's Developer Tools and navigate to the **Storage** (or Application) tab.
+5. **Exploitation Phase:** In the active browser session, open the browser's Developer Tools and navigate to the **Storage** tab.
 6. Locate the `Admin` cookie and manually edit its value from `false` to `true`.
 7. Navigate directly to `/admin` in the browser. The forged cookie grants access to the administrative dashboard.
 8. Click the "Delete" link next to the user `carlos` to complete the attack.
