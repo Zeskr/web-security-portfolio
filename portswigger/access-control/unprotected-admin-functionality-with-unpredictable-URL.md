@@ -11,7 +11,7 @@ The target application utilizes an obfuscated URL to hide its administrative das
 
 ## 2. Reproduction Steps
 1. Navigate to the target application's homepage.
-2. Right-click and select "View Page Source" (or open the browser's Developer Tools).
+2. Right-click and select "View Page Source".
 3. Review the inline JavaScript executing on the page.
 4. Locate the script block handling the `isAdmin` variable, which explicitly discloses the administrative path: `adminPanelTag.setAttribute('href', '/admin-90odtu');`.
 5. Append `/admin-90odtu` to the application's base URL and press Enter.
