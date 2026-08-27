@@ -25,10 +25,12 @@ Reviewing the client-side source code reveals the obfuscated administrative endp
 
 ![Source Code Disclosure](./images/source-disclosure.png)
 
+
 **Privilege Bypass (Missing Authentication):**
 Navigating to the extracted path grants full administrative access without session validation.
 
 ![Unprotected Admin Panel](./images/adminpanel.png)
+
 
 **Exploitation (Impact):**
 Executing the delete action on the target user `carlos`.
