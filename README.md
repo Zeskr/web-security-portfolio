@@ -8,7 +8,7 @@ A central repository documenting manual web application security assessments, vu
 
 | Category | Platform / Scope | Focus Areas | Write-ups |
 | :--- | :--- | :--- | :--- |
-| **Access Control** | PortSwigger Web Security Academy |  Privilege Escalation, URL Bypasses | [View Reports](./portswigger/access-control/) |
+| **Access Control** | PortSwigger Web Security Academy | IDOR, Privilege Escalation, URL Bypasses | [View Reports](./portswigger/access-control/) |
 | **Server-Side Flaws** | PortSwigger / Bug Bounty | SSRF, SQL Injection, File Uploads | *---* |
 | **Client-Side Attacks** | PortSwigger / Labs | Reflected/Stored XSS, CSRF, CORS | *---* |
 | **Network & CTF** | TryHackMe | Full-scope methodology & network auditing | [View Rooms](./tryhackme/) |
